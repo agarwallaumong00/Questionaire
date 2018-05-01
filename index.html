@@ -1,0 +1,82 @@
+<html>
+    <head>
+        <title>Finomena-SPA</title>
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="app.css" />
+    </head>
+    <body ng-app="finomena">
+        <div ng-controller="finomenaController">
+
+            <div layout="row" layout-align="center center" class="credentials">
+                <div layout="column" layout-align="center center" class="user-name" ng-show="showDialogBox">
+                    <md-input-container>
+                        <label>Enter your name</label>
+                        <input ng-model="userName">
+                    </md-input-container>
+                    <md-button ng-disabled="!userName" class="md-raised md-primary" ng-click="saveUserName()">Ok</md-button>
+                </div>
+                <div layout="column" layout-align="space-between" ng-show="showQuestions" class="questions-div">
+                    <div>
+                        <h3>Questions</h3>
+                    </div>
+                    <md-divider></md-divider>                    
+                    <div layout="column" class="questions">
+                        <div class="qs">
+                            <label>Q{{index + 1}}. {{questionArr[index]}}</label>
+                        </div>
+                        <div>
+                            <md-radio-group ng-model="answer[index]" ng-click="radioBtnSelected(index, answer[index])">
+                                <md-radio-button ng-repeat="answer in answerArr[index]" type="button" value="{{answer}}" class="md-primary">{{answer}}</md-radio-button>
+                            </md-radio-group>
+                        </div>
+                    </div>
+
+                    <md-divider></md-divider>
+                    <div layout="row" layout-align="end">
+                        <div class="btn">
+                            <md-button class="md-raised md-primary" ng-if="index>0" ng-click="previousQuestion()">Previous</md-button>
+                        </div>
+                        <div class="btn">
+                            <md-button ng-disabled="!selectedAnswer[index]" class="md-raised md-primary" ng-if="index<questionArr.length-1" ng-click="nextQuestion()">Next</md-button>
+                        </div>
+                        <div class="btn">
+                            <md-button ng-disabled="!selectedAnswer[index]" class="md-raised md-primary" ng-if="index===questionArr.length-1" ng-click="finsih()">Finish</md-button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="backdrop" ng-if="showFinishDialog"></div>
+
+                <div layout="column" layout-align="center center" class="finish-dialog" ng-if="showFinishDialog">
+                    <span>Your are done!!</span>
+                    <md-button class="md-primary md-raised" ng-click="seeAnswers()">See Results!</md-button>
+                </div>
+
+                <div ng-if="showAnswers" class="answer-box">
+                    <h3>Answers</h3>
+                    <div ng-repeat="qs in questionArr track by $index" layout="column" layout-align="space-between" class="q-a-block">
+                        <div layout="row">
+                            <label><strong>Q{{$index + 1}}.</strong> {{qs}}</label>
+                            <i class="material-icons" ng-if="selectedAnswer[$index]===correctAnswersArr[$index]">done</i>
+                            <i class="material-icons clear-icon" ng-if="selectedAnswer[$index]!=correctAnswersArr[$index]">clear</i>                            
+                        </div>
+                        <span ng-class="{correct: selectedAnswer[$index]===correctAnswersArr[$index], incorrect: selectedAnswer[$index]!=correctAnswersArr[$index]}"><strong>Your Answer: </strong>{{selectedAnswer[$index]}}</span>                        
+                        <span><strong>Correct Answer: </strong>{{correctAnswersArr[$index]}}</span>
+                        <md-divider></md-divider>
+                    </div>
+                    <md-button class="md-primary md-raised" ng-click="reset()">Do it again!</md-button>
+                </div>
+            </div>
+            
+
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+        <script src="app.js"></script>
+        
+    </body>
+</html>

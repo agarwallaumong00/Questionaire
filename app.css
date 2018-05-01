@@ -1,0 +1,118 @@
+.credentials {
+    height: 100%;
+    background: aliceblue;
+}
+
+.user-name {
+    width: 400px;
+    height: 160px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px 0px grey;
+    background: white;
+}
+
+.user-name md-input-container {
+    width: 70%;
+}
+
+.questions-div {
+    width: 700px;
+    height: 450px;
+    background: white;
+    box-shadow: 2px 4px 4px 2px grey;
+    border-radius: 16px;
+    padding: 5px;
+}
+
+.questions-div h3 {
+    text-align: center;
+}
+
+.btn {
+    text-align: right;
+}
+
+.questions {
+    height: 80%;
+    padding: 20px;
+}
+
+.qs {
+    margin-bottom: 30px
+}
+
+.questions md-radio-button {
+    margin-bottom: 20px;
+}
+
+.finish-dialog {
+    position: fixed;
+    width: 500px;
+    height: 200px;
+    box-shadow: 2px 4px 4px 2px grey;
+    border-radius: 5px;
+    background: white;
+    left: 33%;
+    top: 25%;
+    padding: 10px;
+    z-index: 2;
+}
+
+.backdrop {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    background: white;
+    opacity: 0.7;
+}
+
+.answer-box {
+    width: 800px;
+    height: 500px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 2px 4px 4px 2px grey;
+    padding: 25px;
+}
+
+.answer-box h3 {
+    text-align: center;
+    border-bottom: 1px solid;
+}
+
+.q-a-block {
+    margin-bottom: 15px;
+    height: 75px;
+}
+
+.q-a-block .correct {
+    color: green;
+}
+
+.q-a-block .incorrect {
+    color: red;
+}
+
+.q-a-block .material-icons {
+    font-size: 14px;
+    color: white;
+    background: darkgreen;
+    border-radius: 50%;
+    height: 14px;
+    width: 14px;
+    margin-left: 5px;
+    margin-top: 3px;
+}
+
+.clear-icon {
+    background: red !important;
+}
+
+md-radio-button.md-checked .md-off {
+    border-color: green !important;
+}
+
+md-radio-button:not([disabled]).md-primary .md-on {
+    background-color: green !important;
+}
